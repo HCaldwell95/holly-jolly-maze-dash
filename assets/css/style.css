@@ -46,3 +46,28 @@ input, select {
     text-decoration: none;
     appearance: none;
 }
+
+input:hover, select:hover {
+    background-color: rgba(67, 105, 31, 0.7)
+}
+
+input:active, select:active {
+    background-color: black;
+}
+
+input:focus, select:focus {
+    outline:none;
+}
+
+.custom-select {
+    display: inline-block;
+}
+
+.custom-select select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-repeat: none;
+    background-position: 125px center;
+}
+
