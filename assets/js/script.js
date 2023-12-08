@@ -132,9 +132,32 @@ partition(r1, r2, c1, c2) {
         }
     }
 
+    /**
+     * Create gaps in partition walls
+     */
+    /* Shuffles the array to randomise gap positions */
     let gaps = this.shuffle([true, true, true, false]);
-    
 
+    /* Creates gaps in the walls based on the shuffled array */
+    if(gaps[0]) {
+    let gapPosition = this.rand(c1, vert);
+    this.maze[this.posToWall(horiz)][this.posToSpace(gapPosition)] = [];
+    }
+
+    if(gaps[1]) {
+        let gapPosition = this.rand(vert + 1, C2 + 1);
+        this.maze[this.posToWall(horiz)][this.posToSpace(gapPosition)] = [];
+    }
+
+    if(gaps[2]) {
+        let gapPosition = this.rand(r1, horiz);
+        this.maze[this.posToWall(vert)][this.posToSpace(gapPosition)] = [];
+    }
+
+    if(gaps[3]) {
+        let gapPosition = this.rand(horiz + 1, r2 + 2);
+        this.maze[this.posToWall(vert)][this.posToSpace(gapPosition)] = [];
+    }
 
 
 
