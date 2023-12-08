@@ -131,3 +131,24 @@ input:focus, select:focus {
 #instructions {
     margin-top: 425px;
 }
+
+/* Small devices (phones, 767px and down) */
+@media only screen and (max-width: 400px) {
+    input, select {
+        width: 120px;
+    }
+}
+
+/* Medium devices such as tablets (768px and up) */
+@media only screen and (min-width: 768px) {
+    input, select {
+        width: 120px;
+    }
+}
+
+/* Large devices such as laptops (1024px and up) */
+@media only screen and (min-width: 1024px) {
+    input, select {
+        width: 120px;
+    }
+}
