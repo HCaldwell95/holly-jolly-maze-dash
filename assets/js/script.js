@@ -159,11 +159,31 @@ partition(r1, r2, c1, c2) {
         this.maze[this.posToWall(vert)][this.posToSpace(gapPosition)] = [];
     }
 
+    /**
+     * Recursively partitions the newly created chambers
+     */
+    this.partition(r1, horiz - 1, c1, vert - 1);
+    this.partition(horiz + 1, r2, c1, vert - 1);
+    this.partition(r1, horiz - 1, vert + 1, c2);
+    this.partition(horiz + 1, r2, vert + 1, c2);
+}
 
+isGap(..cells) {
+    return cells.every((array) => {
+        let row, col;
+        [row, col] = array;
+        if(this.maze[row][col].length > 0 {
+            if(!this.maze[row][col].includes('tree')) {
+                return false;
+            }
+        }
+        return true;
+    })
+}
 
-
-
-
+let Maze = new MazeBuilder(16, 12);
+Maze.placeKey();
+Maze.display("mazeContainer");
 
 
 
