@@ -34,6 +34,7 @@ html, body {
 
 /* Game box styling */
 #game-area {
+    background-color: white;
     margin-top: 30px;
 }
 
@@ -96,16 +97,17 @@ input:focus, select:focus {
 
 /* Toggled message box onclick */
 #message-box {
-    visibility: hidden;
-    color: white;
-    display: block;
-    width: 100vw;
-    height: 100vh;
+    display: none;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: white;
+    border: solid 1px #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+
 }
 
 #message-box #message {
@@ -151,6 +153,53 @@ input:focus, select:focus {
 #instructions {
     margin-top: 425px;
 }
+
+/* Maze styling */
+/* Outer container using CSS grid */
+#maze {
+    display: grid;
+    grid-template-columns: repear(auto-fill, 20px); /* Column Width */
+    grid-gap: 1px;
+}
+
+/* Each row in the maze */
+#maze > div {
+    display: flex;
+}
+
+/* Covers cell in the maze */
+#maze > div > div {
+    flex-grow: 1;
+    aspect-ratio: 1;
+    border: 1px solid #000; /* border for walls */
+}
+
+/* Different types of cells (note: add images) */
+#maze .wall {
+    background-color: pink;
+}
+
+#maze .tree {
+    background-color: blue;
+}
+
+#maze .entrance {
+    background-color: rgb(233, 141, 4)5, 153, 0);
+}
+
+#maze .exit {
+    background-color: rgb(0, 255, 213);
+}
+
+#maze .star {
+    background-color: gold;
+}
+
+
+
+
+
+
 
 /* Small devices such as phones (767px and down) */
 @media only screen and (max-width: 400px) {
