@@ -12,6 +12,19 @@ html, body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Introduction styles */
+
+.introduction-area {
+    background-color: darkolivegreen;
+    border:solid 10px red;
+    border-image: repeating-linear-gradient(45deg, white, white 3%, red 1%, red 8%) 10;
+    margin: 50px;
+}
+
+.introduction-area p {
+    margin: 30px;
+}
+
 /* Game box styling */
 #game-area {
     margin-top: 30px;
@@ -132,7 +145,7 @@ input:focus, select:focus {
     margin-top: 425px;
 }
 
-/* Small devices (phones, 767px and down) */
+/* Small devices such as phones (767px and down) */
 @media only screen and (max-width: 400px) {
     input, select {
         width: 120px;
@@ -142,13 +155,13 @@ input:focus, select:focus {
 /* Medium devices such as tablets (768px and up) */
 @media only screen and (min-width: 768px) {
     input, select {
-        width: 120px;
+        width: 150px;
     }
 }
 
 /* Large devices such as laptops (1024px and up) */
 @media only screen and (min-width: 1024px) {
     input, select {
-        width: 120px;
+        width: 200px;
     }
 }
