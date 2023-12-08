@@ -13,56 +13,57 @@
     <h1 class="heading">
         <!-- Logo Image or Heading Here -->
     </h1>
-    <div>
-        <div class="introduction-area">
-            <h2>Game Brief</h2>
-            <p>
-                Ho, ho, ho! It's Christmas time, and Santa needs your help to make the town sparkle with holiday joy! 
-                Oh no, Dasher and friends got a bit carried away in the Holly Jolly Maze, and all the baubles for the Christmas tree were scattered! <br>
-                Your mission is to venture through the maze and gather up all those shiny baubles. The town's Christmas Spirit depends on you! 
-                But wait, the tree won't be complete without its crowning glory – the shimmering star!<br>
-                Quick, little helper! There's not a moment to spare. Can you find all the baubles and unlock the star to bring Christmas cheer to all the boys and girls in town? 
-                Time is ticking, so get ready for a festive adventure! Good luck and jingle all the way! 🎅🎄
-            </p>
-        </div>
-
-        <div class="message-box">
-            <div id="message">
-                <h3>Chirstmas is saved!</h3>
-                <p>The town gathers around this spectacular Christmas tree.</p>
-                <p id="moves"></p>
-                <input id="okBtn" type="button" onclick="toggleVisability('message-box')" value="Cool!" />
+    <div id="page">
+        <div>
+            <div class="introduction-area">
+                <h2>Game Brief</h2>
+                <p>
+                    Ho, ho, ho! It's Christmas time, and Santa needs your help to make the town sparkle with holiday joy! 
+                    Oh no, Dasher and friends got a bit carried away in the Holly Jolly Maze, and all the baubles for the Christmas tree were scattered! <br>
+                    Your mission is to venture through the maze and gather up all those shiny baubles. The town's Christmas Spirit depends on you! 
+                    But wait, the tree won't be complete without its crowning glory – the shimmering star!<br>
+                    Quick, little helper! There's not a moment to spare. Can you find all the baubles and unlock the star to bring Christmas cheer to all the boys and girls in town? 
+                    Time is ticking, so get ready for a festive adventure! Good luck and jingle all the way! 🎅🎄
+                </p>
             </div>
-        </div>
 
-        <div id="menu">
-            <div class="custom-select">
-                <select id="diffSelect">
-                    <option value="10">Easy</option>
-                    <option value="15">Medium</option>
-                    <option value="25">Hard</option>
-                </select>
+            <div class="message-box">
+                <div id="message">
+                    <h3>Chirstmas is saved!</h3>
+                    <p>The town gathers around this spectacular Christmas tree.</p>
+                    <p id="moves"></p>
+                    <input id="okBtn" type="button" onclick="toggleVisibility('message-box')" value="Cool!" />
+                </div>
             </div>
-            <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
-        </div>
 
-
-
-        <div class="game-area">
-            <div id="mazeContainer">
-                <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+            <div id="menu">
+                <div class="custom-select">
+                    <select id="diffSelect">
+                        <option value="10">Easy</option>
+                        <option value="15">Medium</option>
+                        <option value="25">Hard</option>
+                    </select>
+                </div>
+                <input id="startMazeBtn" type="button" onclick="makeMaze()" value="Start" />
             </div>
-        </div>
 
-        <p id="instructions">Use arrow keys to navigate through the maze and reach the Christmas tree</p>
+
+
+            <div class="game-area">
+                <div id="mazeContainer">
+                    <canvas id="mazeCanvas" class="border" height="1100" width="1100"></canvas>
+                </div>
+            </div>
+
+            <p id="instructions">Use arrow keys to navigate through the maze and reach the Christmas tree</p>
         
-        <script type="text/javacript" src="assets/js/script.js"></script>
+            <script type="text/javacript" src="assets/js/script.js"></script>
 
 
-        <div class="score-area">
+            <div class="score-area">
 
+            </div>
         </div>
-
     </div>
 
 
