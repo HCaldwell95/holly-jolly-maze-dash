@@ -2,7 +2,33 @@
 
 
 
-// Function to enable visibility of 'Okay!' message 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Toggles the message box visibility by revealing the hidden message-box
+ */
+
 function toggleVisibility(message) {
     var element = document.getElementById(message);
     if (element.style.display === 'none' || element.style.display === '') {
