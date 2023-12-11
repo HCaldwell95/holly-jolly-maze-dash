@@ -229,6 +229,36 @@ countSteps(array, r, c, val, stop) {
 
 }
 
+/* Counts steps from paths leading from the exit to the entrance */
+getStarLocation() {
+    let fromEntrance = this.initArray();
+    let fromExit = this.initArray();
+
+    this.totalSteps = 1;
+
+    for(let j = 1; j < this.cols-1; j++) {
+        if(this.maze[this.rows-1][j].includes("entrance")) {
+            this.countSteps(fromExit, 0, j, 0, 'entrance');
+        }
+    }
+}
+
+/* Iterates through each cell to calculate a combined step count for a path from the entrance to the current cell and from the exit to the same cell */
+let fc = -1, fr = -1;
+
+this.maze.forEach((row, r) => {
+    row.forEach((cell, c) => {
+        if(typeof fromEntrance[r][c] == 'undefined') {
+            return;
+        }
+        let stepCount = fromEntrance[r][c] + fromExit[r][c];
+        if(stepCount > this.totalSteps) {
+            fr = r;
+            fc = c;
+            this.totalSteps = stepCount;
+        }
+    });
+});
 
 
 let Maze = new MazeBuilder(16, 12);
