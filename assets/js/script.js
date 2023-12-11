@@ -38,7 +38,7 @@ class MazeBuilder {
                 this.maze[r][treePos] = ['tree', 'entrance'];
             }
 
-            if(r == this.rows - 1) {
+            if(r == this.rows - 1); {
                 /* place entrance in bottom row */
                 let treePos = this.posToSpace(this.rand(1, this.width));
                 this.maze[r][treePos] = ['tree', 'entrance']
@@ -174,8 +174,8 @@ isGap(..cells) {
     return cells.every((array) => {
         let row, col;
         [row, col] = array;
-        if(this.maze[row][col].length > 0) {
-            if(!this.maze[row][col].includes('tree')) {
+        if (this.maze[row][col].length > 0) {
+            if (!this.maze[row][col].includes('tree')) {
                 return false;
             }
         }
@@ -260,10 +260,49 @@ this.maze.forEach((row, r) => {
     });
 });
 
+/* Places star objective */
+placeStar() {
+    let fr, fc;
+    [fr, fc] = this.getStarLocation();
 
-let Maze = new MazeBuilder(16, 12);
-Maze.placeKey();
-Maze.display("mazeContainer");
+    this.maze[fr][fc] = ['star'];
+}
+
+display(id) {
+    this.parentDiv = document.getElementById(id);
+
+    if(!this.parentDiv) {
+        alert("Cannot initialise maze - no element found with id \"" + id + "\"");
+        return false;
+    }
+
+    while(this.parentDiv.firstChild) {
+        this.parentDiv.removeChild(this.parentDiv.firstChild);
+    }
+
+    const container = document.createElement('div');
+    container.id = 'maze';
+    container.dataset.steps = this.totalSteps;
+
+    this.maze.forEach((row) => {
+        let rowDiv = document.createElement('div');
+        row.forEach((cell) => {
+            let cellDiv = document.createElement('div');
+            if(cell) {
+                cellDiv.className = cell.join(" ");
+            }
+            rowDiv.appendChild(cellDiv);
+        });
+        container.appendChild(rowDiv);
+    });
+
+    this.parentDiv.appendChild(container);
+
+    return true;
+}
+
+
+
 
 
 
