@@ -145,7 +145,7 @@ partition(r1, r2, c1, c2) {
     }
 
     if(gaps[1]) {
-        let gapPosition = this.rand(vert + 1, C2 + 1);
+        let gapPosition = this.rand(vert + 1, c2 + 1);
         this.maze[this.posToWall(horiz)][this.posToSpace(gapPosition)] = [];
     }
 
@@ -167,19 +167,69 @@ partition(r1, r2, c1, c2) {
     this.partition(r1, horiz - 1, vert + 1, c2);
     this.partition(horiz + 1, r2, vert + 1, c2);
 }
-
+/**
+ * Determines where openings or paths should be created in the maze
+ */
 isGap(..cells) {
     return cells.every((array) => {
         let row, col;
         [row, col] = array;
-        if(this.maze[row][col].length > 0 {
+        if(this.maze[row][col].length > 0) {
             if(!this.maze[row][col].includes('tree')) {
                 return false;
             }
         }
         return true;
-    })
+    });
 }
+
+/**
+ * Function to count steps taking within the game from start to end
+ */
+
+countSteps(array, r, c, val, stop) {
+
+    /* Checks if the current position (r, c) is out of bounds and returns false if it is */
+    if(!this.inBounds(r, c)) {
+        return false;
+    }
+
+    /** 
+     * Checks if the step value at current position (r, c) is less than or equal to the 'val'
+     * if true it means a shorter route to this position has already been mapped and function will return false
+     */
+    
+    if(array[r][c] <= val) {
+        return false;
+    }
+
+    /* Checks if the current position (r, c) is a gap, if it is not, function will return false */
+    if(!this.isGap([r, c])) {
+        return false;
+    }
+
+    /* Updates the step value at the current position with the provided 'val' */
+    array[r][c] = val;
+
+    /* Checks if the current position includes the 'stop' marker, if true it means the destination has been reached */
+    if(this.maze[r][c].includes(stop)) {
+        return true;
+    }
+
+    /**
+     *  Recursively calls the 'countSteps' fucntion for neighbouring postions with incremented step values.
+     * This continues until the destination is reached or no valid steps are possible 
+     */
+
+    this.countSteps(array, r-1, c, val+1, stop);
+    this.countSteps(array, r, c+1, val+1, stop);
+    this.countSteps(array, r+1, c, val+1, stop);
+    this.countSteps(array, r, c-1, val+1, stop);
+
+
+}
+
+
 
 let Maze = new MazeBuilder(16, 12);
 Maze.placeKey();
