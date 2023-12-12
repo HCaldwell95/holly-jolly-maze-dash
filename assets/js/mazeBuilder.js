@@ -310,15 +310,8 @@ function makeMaze() {
     
         return true;
     }
-    
-    /* End of mazeBuilder */
-
-    
-        }
-    }
-
-    
-
+}
+}
 
 // Initialize the MazeBuilder instance after the class definition
 const myMazeBuilder = new MazeBuilder(5, 5);
