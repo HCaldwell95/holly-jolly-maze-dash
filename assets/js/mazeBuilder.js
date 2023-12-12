@@ -16,6 +16,8 @@ function makeMaze() {
 
         /* Start partitioning */
         this.partition(1, this.height - 1, 1, this.width - 1);
+
+        this.getStarLocation();
     }
 
 
@@ -237,8 +239,22 @@ function makeMaze() {
     this.countSteps(array, r+1, c, val+1, stop);
     this.countSteps(array, r, c-1, val+1, stop);
 
+    }
+    /* Counts steps from paths leading from the exit to the entrance */
+    getStarLocation() {
+        let fromEntrance = this.initArray();
+        let fromExit = this.initArray();
+
+        this.totalSteps = 1;
+
+        for(let j = 1; j < this.cols-1; j++) {
+            if(this.maze[this.rows-1][j].includes("entrance")) {
+                this.countSteps(fromExit, 0, j, 0, 'entrance');
+            }
+    }
+    }
     /* End of mazeBuilder */
-}
+
 }
 }
 }
