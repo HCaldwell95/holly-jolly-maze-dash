@@ -1,4 +1,7 @@
-class MazeBuilder {
+
+function makeMaze() {
+
+    class MazeBuilder {
 
     constructor(width, height) {
         this.width = width;
@@ -39,9 +42,8 @@ class MazeBuilder {
     placeInitialWalls() {
 
         console.log('checkpoint 2');
-
-        this.maze.forEach((row, r) => {
-            row.forEach((cell, c) => {
+        for (let r = 0; r < this.rows; r++) {
+            for (let c = 0; c < this.cols; c++) {
                 switch (r) {
                     case 0:
                     case this.rows - 1:
@@ -52,25 +54,27 @@ class MazeBuilder {
                         if ((r % 2) == 1) {
                             if ((c == 0) || (c == this.cols - 1)) {
                                 this.maze[r][c] = ['wall'];
+                            } 
+                            
+                            else if (c % 2 == 0) {
+                                this.maze[r][c] = ['wall'];
                             }
-                        } else if (c % 2 == 0) {
-                            this.maze[r][c] = ['wall'];
-                        }
                 }
+            }
 
-                if (r == 0) {
-                    /* place tree in the top row */
-                    let doorPos = this.posToSpace(this.rand(1, this.width));
-                    this.maze[r][doorPos] = ['door', 'exit'];
-                }
+            if (r == 0) {
+                /* place tree in the top row */
+                let doorPos = this.posToSpace(this.rand(1, this.width));
+                this.maze[r][doorPos] = ['door', 'exit'];
+            }
 
-                if (r == this.rows - 1) {
-                    /* place entrance in the bottom row */
-                    let doorPos = this.posToSpace(this.rand(1, this.width));
-                    this.maze[r][doorPos] = ['door', 'entrance'];
-                }
-            });
-        });
+            if (r == this.rows - 1) {
+                /* place entrance in the bottom row */
+                let doorPos = this.posToSpace(this.rand(1, this.width));
+                this.maze[r][doorPos] = ['door', 'entrance'];
+        }
+
+        };
     }
 
     /**
@@ -169,8 +173,24 @@ class MazeBuilder {
         // Other methods...
 
     }
+
+    isGap(...cells) {
+        return cells.every((array) => {
+            let row, col;
+            [row, col] = array;
+            if (this.maze[row][col].length > 0) {
+                if (!this.maze[row][col].includes('tree')) {
+                    return false;
+                }
+            }
+            return true;
+        });
+    }
+}
 }
 
 // Initialize the MazeBuilder instance after the class definition
 const myMazeBuilder = new MazeBuilder(5, 5);
 console.log(myMazeBuilder.maze);
+
+makeMaze();
