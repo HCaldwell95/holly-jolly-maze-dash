@@ -10,13 +10,7 @@
 
 
 
-/* Places star objective */
-placeStar() {
-    let fr, fc;
-    [fr, fc] = this.getStarLocation();
 
-    this.maze[fr][fc] = ['star'];
-}
 
 display(id) {
     this.parentDiv = document.getElementById(id);

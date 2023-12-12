@@ -278,11 +278,46 @@ function makeMaze() {
     this.maze[fr][fc] = ['star'];
     }
     
+    display(id) {
+        this.parentDiv = document.getElementById(id);
+    
+        if(!this.parentDiv) {
+            alert("Cannot initialise maze - no element found with id \"" + id + "\"");
+            return false;
+        }
+    
+        while(this.parentDiv.firstChild) {
+            this.parentDiv.removeChild(this.parentDiv.firstChild);
+        }
+    
+        const container = document.createElement('div');
+        container.id = 'maze';
+        container.dataset.steps = this.totalSteps;
+    
+        this.maze.forEach((row) => {
+            let rowDiv = document.createElement('div');
+            row.forEach((cell) => {
+                let cellDiv = document.createElement('div');
+                if(cell) {
+                    cellDiv.className = cell.join(" ");
+                }
+                rowDiv.appendChild(cellDiv);
+            });
+            container.appendChild(rowDiv);
+        });
+    
+        this.parentDiv.appendChild(container);
+    
+        return true;
+    }
+    
     /* End of mazeBuilder */
 
+    
         }
     }
 
+    
 
 
 // Initialize the MazeBuilder instance after the class definition
