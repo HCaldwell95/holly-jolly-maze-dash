@@ -8,22 +8,7 @@
 
 
 
-/* Iterates through each cell to calculate a combined step count for a path from the entrance to the current cell and from the exit to the same cell */
-let fc = -1, fr = -1;
 
-this.maze.forEach((row, r) => {
-    row.forEach((cell, c) => {
-        if(typeof fromEntrance[r][c] == 'undefined') {
-            return;
-        }
-        let stepCount = fromEntrance[r][c] + fromExit[r][c];
-        if(stepCount > this.totalSteps) {
-            fr = r;
-            fc = c;
-            this.totalSteps = stepCount;
-        }
-    });
-});
 
 /* Places star objective */
 placeStar() {

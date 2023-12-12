@@ -271,15 +271,24 @@ function makeMaze() {
             });
         });
     }
+    
+    /* Places star objective */
+    placeStar() {
+    let [fr, fc] = this.getStarLocation();
+    this.maze[fr][fc] = ['star'];
+    }
+    
     /* End of mazeBuilder */
 
-}
-}
-}
+        }
+    }
+
 
 
 // Initialize the MazeBuilder instance after the class definition
 const myMazeBuilder = new MazeBuilder(5, 5);
 console.log(myMazeBuilder.maze);
+
+}
 
 makeMaze();
