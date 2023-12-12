@@ -1,43 +1,8 @@
 <script src="assets/js/mazeBuilder.js"></script>
 
-/* Out of bounds */
-inBounds(r, c) {
-    if((typeof this.maze[r] == 'undefined') || (typeof this.maze[r][c] == 'undefined')) {
-        return false;
-    }
-    return true;
-}
 
 /* Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array/12646864#12646864" */
 
-/**
- * Picks a random element for each original array element and excludes it from the next draw
- */
-shuffle(array) {
-    for(let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-
-
-    
-/**
- * Determines where openings or paths should be created in the maze
- */
-isGap(...cells) {
-    return cells.every((array) => {
-        let row, col;
-        [row, col] = array;
-        if (this.maze[row][col].length > 0) {
-            if (!this.maze[row][col].includes('tree')) {
-                return false;
-            }
-        }
-        return true;
-    });
-}
 
 /**
  * Function to count steps taking within the game from start to end
