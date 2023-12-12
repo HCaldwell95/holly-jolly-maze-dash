@@ -1,54 +1,14 @@
+<script src="assets/js/mazeBuilder.js"></script>
+
+/**
+ * Defines variables required
+ */
+const myArray = initArray(0);
+const randomNumber = rand(1, 16);
+const spaceIndex = posToSpace(3);
+constWallIndex = posToWall(4);
 
 
-class MazeBuilder {
-
-    constructor(width, height) {
-        this.width = width;
-        this.height = height;
-
-        this.cols = 2 * this.width + 1;
-        this.rows = 2 * this.height + 1;
-
-        this.maze = this.initArray([]);
-
-        /* place initial walls */
-        this.maze.forEach((row, r) => {
-            row.forEach((cell, c) => {
-                switch(r)
-                {
-                    case 0:
-                    case this.rows - 1:
-                        this.maze[r][c] = ['wall'];
-                        break;
-
-                    default:
-                        if((r % 2) == 1) {
-                            if((c == 0) || (c == this.cols - 1)) {
-                                this.maze[r][c] = ['wall'];
-                            }
-                        } else if(c % 2 == 0) {
-                            this.maze[r][c] = ['wall'];
-                        }
-                }
-            });
-
-            if(r == 0) {
-                /* place tree in top row */
-                let treePos = this.posToSpace(this.rand(1, this.width));
-                this.maze[r][treePos] = ['tree', 'entrance'];
-            }
-
-            if(r == this.rows - 1); {
-                /* place entrance in bottom row */
-                let treePos = this.posToSpace(this.rand(1, this.width));
-                this.maze[r][treePos] = ['tree', 'entrance']
-            }
-        })
-        /* Start partitioning */
-        this.partition(1, this.height - 1, 1, this.width - 1);
-    }
-
-}
 /**
  * Creates a matrix with my specified number of rows and columns
  * and fills each element with a value
@@ -120,7 +80,7 @@ partition(r1, r2, c1, c2) {
         y = c2 + 1;
         start = Math.round(x + (y - x) / 3);
         end = Math.round(x + 2 * (y - x) / 3);
-        horiz = this.rand(start, end);
+        vert = this.rand(start, end);
     }
 
     /* Create walls to partition the maze */
@@ -170,7 +130,7 @@ partition(r1, r2, c1, c2) {
 /**
  * Determines where openings or paths should be created in the maze
  */
-isGap(..cells) {
+isGap(...cells) {
     return cells.every((array) => {
         let row, col;
         [row, col] = array;
@@ -300,6 +260,10 @@ display(id) {
 
     return true;
 }
+
+let Maze = new MazeBuilder(16, 12);
+Maze.placeStar();
+Maze.display('mazeContainer');
 
 
 

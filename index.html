@@ -53,7 +53,16 @@
 
             <div class="game-area">
                 <div id="mazeContainer">
-                    <canvas id="mazeCanvas" height="1100" width="1100"></canvas>
+                    <div id="maze" class="finished">
+
+                    </div>
+                    <div id="maze_output">
+                        <div id="maze-score" class="has-star">Score: </div>
+                        <div id="maze-message"></div>
+                    </div>
+
+
+                    <!-- <canvas id="mazeCanvas" height="1100" width="1100"></canvas> -->
                 </div>
             </div>
         
@@ -71,11 +80,6 @@
 
 
     <script src="assets/js/script.js"></script>
-    <script>
-    let Maze = new MazeBuilder(16, 12);
-        Maze.placeKey();
-        Maze.display("mazeContainer");
-        </script>
 
 </body>
 </html>

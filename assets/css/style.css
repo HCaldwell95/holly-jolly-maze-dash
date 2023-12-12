@@ -45,13 +45,12 @@ html, body {
     right: 0;
     width: 100vh;
     height: auto;
-    
 }
 
 #mazeContainer {
     position: relative;
     margin: 1em auto;
-    width: fit-content;
+    width: 80%;
     text-align: center;
     display: block;
     height: 400px;
@@ -59,7 +58,7 @@ html, body {
     border: solid 2px rgb(173, 82, 82);
 }
 
-#mazeCanvas {
+#mazeContainer {
     position: relative;
     background-color: #a7c53f;
     /* Change This */
@@ -105,7 +104,7 @@ input:focus, select:focus {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-repeat: none;
+    background-repeat: no-repeat;
     background-position: 125px center;
 }
 
@@ -216,7 +215,7 @@ input:focus, select:focus {
 
 
 /* Small devices such as phones (767px and down) */
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
     input, select {
         width: 120px;
     }
@@ -228,10 +227,10 @@ input:focus, select:focus {
     #mazeContainer {
     margin: 20px;
     }
-
 }
+
 /* Medium devices such as tablets (768px and up) */
-@media only screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
     input, select {
         width: 150px;
     }
