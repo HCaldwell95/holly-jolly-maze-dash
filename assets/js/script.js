@@ -1,34 +1,5 @@
 <script src="assets/js/mazeBuilder.js"></script>
 
-/**
- * Defines variables required
- */
-const myArray = initArray(0);
-const randomNumber = rand(1, 16);
-const spaceIndex = posToSpace(3);
-constWallIndex = posToWall(4);
-
-
-/**
- * Creates a matrix with my specified number of rows and columns
- * and fills each element with a value
- */
-initArray(value) {
-    return new Array(this.rows).fill().map(() => new Array(this.cols).fill(value));
-}
-
-rand(min, max) {
-    return min + Math.floor(Math.random() * (1 + max - min));
-}
-
-posToSpace(x) {
-    return 2 * (x-1) + 1;
-}
-
-posToWall(x) {
-    return 2 * x;
-}
-
 /* Out of bounds */
 inBounds(r, c) {
     if((typeof this.maze[r] == 'undefined') || (typeof this.maze[r][c] == 'undefined')) {
@@ -49,48 +20,7 @@ shuffle(array) {
     }
     return array;
 }
-/**
- * Creates the partition walls via the recursive division method
- */
-partition(r1, r2, c1, c2) {
-    /* Source: en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_division_method */
 
-    let horiz, vert, x, y, start, end;
-
-    /* If the region is too small, stop deviding */
-    if((r2 < r1) || (c2 < c1)) {
-        return false;
-    }
-
-    /* Decide whether to create a horizonal or vertical wall */
-    if(r1 == r2) {
-        horiz = r1;
-    } else {
-        x = r1+1;
-        y = r2+1;
-        start = Math.round(x + (y - x) / 4);
-        end = Math.round(x + 3*(y - x) / 4);
-        horiz = this.rand(start, end);
-    }
-
-    if(c1 == c2) {
-        vert = c1;
-    } else {
-        x = c1 + 1;
-        y = c2 + 1;
-        start = Math.round(x + (y - x) / 3);
-        end = Math.round(x + 2 * (y - x) / 3);
-        vert = this.rand(start, end);
-    }
-
-    /* Create walls to partition the maze */
-    for(let i = this.posToWall(r1)-1; i <= this.posToWall(r2)+1; i++) {
-        for(let j = this.posToWall(c1)-1; j <= this.posToWall(c2)+1; j++) {
-            if((i == this.posToWall(horiz)) || (j == this.posToWall(vert))) {
-                this.maze[i][j] = ['wall'];
-            }
-        }
-    }
 
     /**
      * Create gaps in partition walls
@@ -126,7 +56,7 @@ partition(r1, r2, c1, c2) {
     this.partition(horiz + 1, r2, c1, vert - 1);
     this.partition(r1, horiz - 1, vert + 1, c2);
     this.partition(horiz + 1, r2, vert + 1, c2);
-}
+
 /**
  * Determines where openings or paths should be created in the maze
  */
@@ -261,9 +191,7 @@ display(id) {
     return true;
 }
 
-let Maze = new MazeBuilder(16, 12);
-Maze.placeStar();
-Maze.display('mazeContainer');
+
 
 
 

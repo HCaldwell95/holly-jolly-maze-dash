@@ -27,7 +27,8 @@ html, body {
     background-color: darkolivegreen;
     border:solid 10px red;
     border-image: repeating-linear-gradient(45deg, white, white 2.5%, red 1%, red 8%) 10;
-    margin: 4em;
+    width: 70%;
+    margin: 1em auto;
 }
 
 .introduction-area p {
